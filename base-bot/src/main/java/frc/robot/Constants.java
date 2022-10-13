@@ -4,7 +4,7 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 import edu.wpi.first.util.sendable.SendableBuilder.BackendKind;
 
@@ -28,8 +28,8 @@ public final class Constants {
 
         // Remeber these numbers we are assigning are where we will position them on the can bus. 
                                                           // Ignore this is for an Example
-        public static final int FRONT_LEFT_MOTOR = 1; public static final WPI_TalonSRX fLM = new WPI_TalonSRX(FRONT_LEFT_MOTOR); // Yes! you can do this you could write infite amount of code in one line
-        public static final int BACK_LEFT_MOTOR = 2; public static final WPI_TalonSRX bRM = new WPI_TalonSRX(BACK_LEFT_MOTOR);  // However it can get very confusing fast. 
+        public static final int FRONT_LEFT_MOTOR = 1; public static final WPI_TalonFX fLM = new WPI_TalonFX(FRONT_LEFT_MOTOR); // Yes! you can do this you could write infite amount of code in one line
+        public static final int BACK_LEFT_MOTOR = 2; public static final WPI_TalonFX bRM = new WPI_TalonFX(BACK_LEFT_MOTOR);  // However it can get very confusing fast. 
         public static final int FRONT_RIGHT_MOTOR = 3;
         public static final int BACK_RIGHT_MOTOR = 4;
         
@@ -39,12 +39,16 @@ public final class Constants {
 
 
     public static final class Pnuematics {
+        public static final int COMP = 10;
+        public static final int D_SOLENOID_CHANNEL_0 = 0;
+        public static final int D_SOLENOID_CHANNEL_1 = 1;
+
 
     }
 
 
     public static final class Shooter {
-
+        public static final int SHOOTER_MOTOR_1 = 5;
     }
 
 

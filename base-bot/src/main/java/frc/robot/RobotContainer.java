@@ -4,12 +4,17 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.ShooterBallControl;
 import frc.robot.commands.DefaultDrive;
 import frc.robot.subsystems.DrivetrainSub;
+import frc.robot.subsystems.PnuematicSub;
+import frc.robot.subsystems.ShooterSub;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -23,6 +28,9 @@ public class RobotContainer {
 
   // The robot's subsystems and commands are defined here...   Technically this creates a new object and is slightly slower than getting an instance, which again is something we may tackle later in the year
   private final DrivetrainSub drivetrain = new DrivetrainSub();
+  private final ShooterSub m_shooter = new ShooterSub();
+  private final PnuematicSub m_pnuematics = new PnuematicSub();
+
 
   //private final DefaultDrive m_autoCommand = new DefaultDrive(m_exampleSubsystem);
 
@@ -35,10 +43,12 @@ public class RobotContainer {
     drivetrain.setDefaultCommand(
       new DefaultDrive(
         drivetrain,
-         () -> bigStick.getY(),
-         () -> bigStick.getX())
-    );
+        bigStick.getY(),
+        bigStick.getX()
+ 
+    ));
 
+ 
     // Configure the button bindings
     configureButtonBindings();
   }
@@ -49,7 +59,20 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+
+    final JoystickButton k1 = new JoystickButton(bigStick, 1);
+    final JoystickButton k2 = new JoystickButton(bigStick, 1);
+
+    // Demonstrate some ways to do buttons
+    k1.whenPressed(new ShooterBallControl(m_shooter, Constants.Shooter.shooterBallOut));
+    k2.whenPressed(new ShooterBallControl(m_shooter, Constants.Shooter.shooterBallIn));
+
+
+  }
+  
+
+
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
@@ -60,4 +83,7 @@ public class RobotContainer {
     // An ExampleCommand will run in autonomous
     return null;
   }
+
+  
+
 }

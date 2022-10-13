@@ -12,13 +12,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
 public class DefaultDrive extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   // Here you are creating "object" of the drive subsystem aka giving m_subsystem able to do things declared inside drivetrainSub
   private final DrivetrainSub m_subsystem;
   // m_foward and rotation are variables that we are declaring and not declaring a set speed, this will be done with your joystick in Robotconatiner 
-  private final DoubleSupplier m_foward;
-  private final DoubleSupplier m_rotation;
-
+  private final Double m_foward;
+  private final Double m_rotation;
+  
   /**
    * Creates a new ExampleCommand.
    *
@@ -26,10 +25,12 @@ public class DefaultDrive extends CommandBase {
    * 
    * Some of this is repetive and in theory could be skipped via other structures, however this is easier to see what would and is happening. 
    */
-  public DefaultDrive(DrivetrainSub subsystem, DoubleSupplier foward, DoubleSupplier rotation) {
+  public DefaultDrive(DrivetrainSub subsystem, Double foward, Double rotation) {
     m_subsystem = subsystem;
     m_foward = foward;
     m_rotation = rotation;
+
+    
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
   }
@@ -44,8 +45,10 @@ public class DefaultDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+   
+    m_subsystem.arcadeDrive(m_foward, m_rotation);
 
-    m_subsystem.arcadeDrive(m_foward.getAsDouble(), m_rotation.getAsDouble());
+
 
   }
 
