@@ -24,7 +24,10 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
 
+  // This would be declaring the Large Joystick
   private final Joystick bigStick = new Joystick(Constants.IO.JOYSTICK);
+  // This would be declaring Xbox Controller
+  private final XboxController xboxController = new XboxController(Constants.IO.CONTROLLER);
 
   // The robot's subsystems and commands are defined here...   Technically this creates a new object and is slightly slower than getting an instance, which again is something we may tackle later in the year
   private final DrivetrainSub drivetrain = new DrivetrainSub();
@@ -47,8 +50,11 @@ public class RobotContainer {
         bigStick.getX()
  
     ));
-
- 
+    /* This would be an example of using Xbox over Joystick
+    drivetrain.setDefaultCommand(
+      new DefaultDrive(drivetrain, xboxController.getRightX() , xboxController.getLeftY())
+    );
+    */
     // Configure the button bindings
     configureButtonBindings();
   }

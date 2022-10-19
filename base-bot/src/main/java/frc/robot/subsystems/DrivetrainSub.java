@@ -6,7 +6,7 @@ package frc.robot.subsystems;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 import org.ejml.dense.row.decomposition.eig.watched.WatchedDoubleStepQREigen_DDRM;
 
@@ -18,7 +18,7 @@ import frc.robot.Constants;
 public class DrivetrainSub extends SubsystemBase {
   /*
   * Defining our motors for the drivetrain, in the future you may also define items such as encoders and other data systems here too. 
-  * WPI_TalonSRX is the motor controller you will be using for the game, however during the build season you will almost exclusively use WPI_TalonFX (Falon500s). 
+  * WPI_TalonFX is the motor controller you will be using for the game, however during the build season you will almost exclusively use WPI_TalonFX (Falon500s). 
   * Constans.Drivetrain is calling up the classes and underlying variables you defined in the Constants class.
   * Constants might seem like a lot of work however the benefits are worth it.
   * The benefit is that you are able to change all the locations of any motor inside one class, meaning you dont have to move between many classes looking for one motor. 
@@ -32,10 +32,10 @@ public class DrivetrainSub extends SubsystemBase {
   * We will tackle a few ways of declaring our drivetrain. It will be up to you guys how you choose to ultimately do it, I'm just showing some possibilities. 
   */
   // Downside to this first is a few more lines of code, and a lot more code within each class.
-  private final WPI_TalonSRX frontLeftMotor = new WPI_TalonSRX(Constants.Drivetrain.FRONT_LEFT_MOTOR);
-  private final WPI_TalonSRX backLeftMotor = new WPI_TalonSRX(Constants.Drivetrain.BACK_LEFT_MOTOR);
-  private final WPI_TalonSRX frontRightMotor = new WPI_TalonSRX(Constants.Drivetrain.FRONT_RIGHT_MOTOR);
-  private final WPI_TalonSRX backRightMotor = new WPI_TalonSRX(Constants.Drivetrain.BACK_RIGHT_MOTOR);
+  private final WPI_TalonFX frontLeftMotor = new WPI_TalonFX(Constants.Drivetrain.FRONT_LEFT_MOTOR);
+  private final WPI_TalonFX backLeftMotor = new WPI_TalonFX(Constants.Drivetrain.BACK_LEFT_MOTOR);
+  private final WPI_TalonFX frontRightMotor = new WPI_TalonFX(Constants.Drivetrain.FRONT_RIGHT_MOTOR);
+  private final WPI_TalonFX backRightMotor = new WPI_TalonFX(Constants.Drivetrain.BACK_RIGHT_MOTOR);
 
   // This is grouping the defined above motors into groups left side and right side. 
   private final MotorControllerGroup leftControllerGroup = new MotorControllerGroup(frontLeftMotor, backLeftMotor);
@@ -48,12 +48,12 @@ public class DrivetrainSub extends SubsystemBase {
   // Second way to do what we did above
   // This way appears to be shorter however in the future when getting sensor positions you will have to declare the motors similar to lines 34-37.
   private final MotorControllerGroup lControllerGroup = new MotorControllerGroup(
-    new WPI_TalonSRX(Constants.Drivetrain.FRONT_LEFT_MOTOR),
-    new WPI_TalonSRX(Constants.Drivetrain.BACK_LEFT_MOTOR));
+    new WPI_TalonFX(Constants.Drivetrain.FRONT_LEFT_MOTOR),
+    new WPI_TalonFX(Constants.Drivetrain.BACK_LEFT_MOTOR));
 
   private final MotorControllerGroup rControllerGroup = new MotorControllerGroup(
-    new WPI_TalonSRX(Constants.Drivetrain.FRONT_RIGHT_MOTOR),
-    new WPI_TalonSRX(Constants.Drivetrain.BACK_RIGHT_MOTOR));
+    new WPI_TalonFX(Constants.Drivetrain.FRONT_RIGHT_MOTOR),
+    new WPI_TalonFX(Constants.Drivetrain.BACK_RIGHT_MOTOR));
 
   private final DifferentialDrive dDrive = new DifferentialDrive(lControllerGroup, rightControllerGroup);
 
@@ -65,9 +65,7 @@ public class DrivetrainSub extends SubsystemBase {
 
 
   /** Creates a new ExampleSubsystem. */
-  public DrivetrainSub(
-    
-  ) {}
+  public DrivetrainSub( ) {  }
 
 
   /*

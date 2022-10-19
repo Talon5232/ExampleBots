@@ -17,6 +17,9 @@ public class baseAuto extends SequentialCommandGroup {
   public baseAuto(DrivetrainSub m_drive, ShooterSub m_shooter) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
+   
+   
+   // Incredibly simple auto, drives forwards for 1 second stops, then shoots for 1 second then stops. 
     addCommands(
     new SequentialCommandGroup(
       new DefaultDrive(m_drive, 1.0, 0.0).withTimeout(1),

@@ -49,6 +49,10 @@ public final class Constants {
 
     public static final class Shooter {
         public static final int SHOOTER_MOTOR_1 = 5;
+
+        // Ball Control
+        public static final boolean shooterBallIn = true;
+        public static final boolean shooterBallOut = false;
     }
 
 
@@ -58,7 +62,7 @@ public final class Constants {
         // Driverstation slots under USB goes as follows: 0,1,2,3.
         public static final int JOYSTICK = 0;
         public static final int BLUE_BUTTONS = 1;
-
+        public static final int CONTROLLER = 2;
 
     }
 }

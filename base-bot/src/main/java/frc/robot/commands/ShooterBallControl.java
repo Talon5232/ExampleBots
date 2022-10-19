@@ -7,35 +7,18 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ShooterSub;
 
-public class BallOut extends CommandBase {
+public class ShooterBallControl extends CommandBase {
   private final ShooterSub m_shooter;
-  private final int m_speed;
-  private final int m_direction;
+  private final boolean m_direction;
 
   /** Creates a new BallOut. */
-  public BallOut(ShooterSub sub, int speed, int direction) {
+  public ShooterBallControl(ShooterSub sub, boolean direction) {
     m_shooter = sub;
-    m_speed = speed;
     m_direction = direction;
 
-    addRequirements(sub);
+    addRequirements(m_shooter);
     
     // Use addRequirements() here to declare subsystem dependencies.
-  }
-
-  public boolean setDirectionOut(boolean x) {
-
-    return this.direction = x;
-
-  }
-
-
-  public boolean setDirectionIn(boolean x) {
-    return this.direction = x;
-  }
-
-  public boolean getDirection(){
-    return direction;
   }
 
   // Called when the command is initially scheduled.
@@ -46,8 +29,13 @@ public class BallOut extends CommandBase {
   @Override
   public void execute() {
 
-    m_shooter.shooterControl(m_speed, m_direction);
-
+    //Controlling our execute like this allow us to use 1 command instead of 2 for controlling in/out movement. Keeps our code slightly more condensed. 
+    if (m_direction == true){
+      m_shooter.ballIn();
+    }
+    else if (m_direction == false){
+      m_shooter.ballOut();
+    }
   }
 
   // Called once the command ends or is interrupted.

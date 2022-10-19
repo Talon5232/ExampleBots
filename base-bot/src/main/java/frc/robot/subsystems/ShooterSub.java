@@ -18,24 +18,12 @@ public class ShooterSub extends SubsystemBase {
   public ShooterSub() {}
 
 
-  /**
-   * 
-   * @param setRotationSpeed Should be how fast you want to spin, thus 0-1
-   * @param setDirection Should be 1 or -1, depending on which direction you want the motor to spin.
-   * Think of it as Speed*Direction = 1 or -1 thus forward or reverse.
-   */
-  public void shooterControl(double setRotationSpeed, int setDirection){
-
-    shooterMotor1.set(ControlMode.PercentOutput, setRotationSpeed*setDirection);
-
-  }
-
   public void ballOut(){
-    shooterControl(1, -1);
+    shooterMotor1.set(ControlMode.PercentOutput, 1);
   }
 
   public void ballIn(){
-    shooterControl(1, 1); 
+    shooterMotor1.set(ControlMode.PercentOutput, -1);
   }
 
 
