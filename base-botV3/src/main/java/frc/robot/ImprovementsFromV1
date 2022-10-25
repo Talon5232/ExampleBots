@@ -1,0 +1,16 @@
+Comparing Code V1 to V2(This version)
+All help us become more accurate and consitent, and accuracy + consitency is always good. 
+Encoder Data for Drivetrain is now displayed on shuffleboard. 
+Drivetrain encoder Data is now used in auto to give us a slightly more accurate auto.
+Gyro data is now displayed, and used to help us turn slightly in auto. 
+This leads us to an improved auto which is very important in being a top team, or a team that will get picked during tournament times.
+Once we have experienced the intro to encoders and data we can start to increase the difficulty.
+The addition of Cameras to the shuffleboard allows us to see the field much more easily. 
+This helps us imporve our drivers accuracy when manuevering the field during gameplay. 
+
+
+
+!! I want to see you implement the new information learned to create a auto that uses Gyro and Encoder data instead of time !!
+This will help you understand what you have learned so far. 
+Think critically, gyros in its most basic config will allow you find the angle the robot has turned, and encoders will allow you to track how far a bot has moved with quite consistent results. 
+If you have Questions or Concerns you know where to find me. 
